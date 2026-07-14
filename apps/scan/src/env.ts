@@ -100,4 +100,7 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   },
   emptyStringAsUndefined: true,
+  // Docker builds compile without runtime secrets — validation still runs on
+  // boot (first env access). Set SKIP_ENV_VALIDATION=1 only for `next build`.
+  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
 });

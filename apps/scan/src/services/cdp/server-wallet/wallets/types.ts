@@ -20,10 +20,15 @@ export type NetworkServerWallet<T extends Chain> = (name: string) => {
   ) => CdpResultAsync<string>;
 };
 
+/** Chains the CDP server-wallet SDK can hold wallets on — HyperEVM is a
+ * supported *scan* chain but is not in CDP's network registry. */
+export type WalletChain = Exclude<SupportedChain, Chain.HYPEREVM>;
+export type WalletEvmChain = Exclude<SupportedEVMChain, Chain.HYPEREVM>;
+
 export type EvmWallets = {
-  [K in SupportedEVMChain]: ReturnType<NetworkServerWallet<K>>;
+  [K in WalletEvmChain]: ReturnType<NetworkServerWallet<K>>;
 };
 
 export type Wallets = {
-  [K in SupportedChain]: ReturnType<NetworkServerWallet<K>>;
+  [K in WalletChain]: ReturnType<NetworkServerWallet<K>>;
 };

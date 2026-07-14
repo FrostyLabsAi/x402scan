@@ -76,3 +76,5 @@ Thumbs.db
 # Agents
 .cursor
 .claude
+# Internal ops docs — never public
+X402SCAN_DEPLOY.md

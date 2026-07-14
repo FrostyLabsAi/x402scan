@@ -3,6 +3,7 @@ import { TRPCError } from '@trpc/server';
 import { createTRPCRouter, protectedProcedure } from '@/trpc/trpc';
 
 import { getUserWallets } from '@/services/cdp/server-wallet/user';
+import { isWalletChain } from '@/services/cdp/server-wallet/wallets';
 import { mixedAddressSchema, supportedChainSchema } from '@/lib/schemas';
 import z from 'zod';
 import {
@@ -23,8 +24,19 @@ import { env } from '@/env';
 import type { ClientEvmSigner } from '@/lib/x402/wrap-fetch';
 import type { ClientSvmSigner } from '@x402/svm';
 
+// Server wallets are CDP-backed, and CDP has no HyperEVM support — reject it
+// at the input boundary so every `wallets[chain]` below indexes safely.
 const serverWalletChainShape = {
-  chain: supportedChainSchema,
+  chain: supportedChainSchema.transform((chain, ctx) => {
+    if (!isWalletChain(chain)) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'No server wallets on this chain',
+      });
+      return z.NEVER;
+    }
+    return chain;
+  }),
 };
 
 const serverWalletChainSchema = z.object(serverWalletChainShape);
@@ -126,7 +138,7 @@ export const serverWalletRouter = createTRPCRouter({
   chainsWithBalances: protectedProcedure.query(async ({ ctx }) => {
     const { wallets } = await getUserWallets(ctx.session.user.id);
     const balanceResults = await Promise.all(
-      SUPPORTED_CHAINS.map(async chain => {
+      SUPPORTED_CHAINS.filter(isWalletChain).map(async chain => {
         const result = await wallets[chain].getTokenBalance({
           token: usdc(chain),
         });
@@ -144,7 +156,7 @@ export const serverWalletRouter = createTRPCRouter({
   sendUsdc: protectedProcedure
     .input(
       z.object({
-        chain: supportedChainSchema,
+        ...serverWalletChainShape,
         amount: z.number(),
         address: mixedAddressSchema,
       })

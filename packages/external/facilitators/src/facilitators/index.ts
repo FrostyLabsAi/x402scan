@@ -4,6 +4,7 @@ export { aurracloud, aurracloudFacilitator } from './aurracloud';
 export { thirdweb, thirdwebFacilitator } from './thirdweb';
 export { x402rs, x402rsFacilitator } from './x402rs';
 export { payai, payaiFacilitator } from './payai';
+export { frostyfi, frostyfiFacilitator } from './frostyfi';
 export { corbits, corbitsFacilitator } from './corbits';
 export { dexter, dexterFacilitator } from './dexter';
 export { daydreams, daydreamsFacilitator } from './daydreams';

@@ -1,5 +1,6 @@
 import { PrismaClient } from '../generated/prisma/client';
 import { PrismaNeon } from '@prisma/adapter-neon';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 import { neonConfig } from '@neondatabase/serverless';
 
@@ -7,14 +8,24 @@ import ws from 'ws';
 
 neonConfig.webSocketConstructor = ws;
 
+// FORK-ONLY (keep out of upstream PRs): DATABASE_DRIVER=pg runs against plain
+// Postgres (self-hosted) instead of Neon's serverless protocol.
+const usePg = process.env.DATABASE_DRIVER === 'pg';
+
+const makeAdapter = (connectionString: string) =>
+  usePg
+    ? new PrismaPg({ connectionString })
+    : new PrismaNeon({ connectionString });
+
+type ScanAdapter = ReturnType<typeof makeAdapter>;
+
 const globalForPrisma = global as unknown as {
   scanDb: PrismaClient;
-  scanDbAdapter: PrismaNeon;
+  scanDbAdapter: ScanAdapter;
 };
 
 const scanDbAdapter =
-  globalForPrisma.scanDbAdapter ||
-  new PrismaNeon({ connectionString: process.env.SCAN_DATABASE_URL! });
+  globalForPrisma.scanDbAdapter || makeAdapter(process.env.SCAN_DATABASE_URL!);
 if (process.env.NODE_ENV !== 'production')
   globalForPrisma.scanDbAdapter = scanDbAdapter;
 
