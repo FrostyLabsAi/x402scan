@@ -97,6 +97,8 @@ export const USDC_ADDRESS = {
     'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v' as SolanaAddress,
   [Chain.POLYGON]: '0x3c499c542cef5e3811e1192ce70d8cc03d5c3359' as const,
   [Chain.OPTIMISM]: '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85' as const,
+  // HyperEVM native Circle USDC (FiatTokenV2_2)
+  [Chain.HYPEREVM]: '0xb88339cb7199b77e23db6e890353e22632ba630f' as const,
 } satisfies Record<Chain, MixedAddress>;
 
 const HTML_ENTITIES: Record<string, string> = {

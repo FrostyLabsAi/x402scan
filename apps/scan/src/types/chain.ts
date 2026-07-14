@@ -5,11 +5,16 @@ export enum Chain {
   SOLANA = 'solana',
   POLYGON = 'polygon',
   OPTIMISM = 'optimism',
+  HYPEREVM = 'hyperevm',
 }
 
 export type EvmChain = Exclude<Chain, Chain.SOLANA>;
 
-export const SUPPORTED_CHAINS = [Chain.BASE, Chain.SOLANA] as const;
+export const SUPPORTED_CHAINS = [
+  Chain.BASE,
+  Chain.SOLANA,
+  Chain.HYPEREVM,
+] as const;
 
 export type SupportedChain = (typeof SUPPORTED_CHAINS)[number];
 
@@ -20,6 +25,7 @@ export const CHAIN_LABELS: Record<Chain, string> = {
   [Chain.SOLANA]: 'Solana',
   [Chain.POLYGON]: 'Polygon',
   [Chain.OPTIMISM]: 'Optimism',
+  [Chain.HYPEREVM]: 'HyperEVM',
 };
 
 export const CHAIN_ICONS: Record<Chain, string> = {
@@ -27,6 +33,7 @@ export const CHAIN_ICONS: Record<Chain, string> = {
   [Chain.SOLANA]: '/solana.png',
   [Chain.POLYGON]: '/polygon.png',
   [Chain.OPTIMISM]: '/optimism.png',
+  [Chain.HYPEREVM]: '/hyperevm.png',
 };
 
 export const CHAIN_ID: Record<Chain, number> = {
@@ -34,4 +41,5 @@ export const CHAIN_ID: Record<Chain, number> = {
   [Chain.POLYGON]: polygon.id,
   [Chain.OPTIMISM]: optimism.id,
   [Chain.SOLANA]: 0,
+  [Chain.HYPEREVM]: 999,
 };

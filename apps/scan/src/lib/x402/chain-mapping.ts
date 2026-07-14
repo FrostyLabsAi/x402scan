@@ -18,6 +18,9 @@ const EvmNetworkToChainId: Record<string, number> = {
   story: 1514,
   educhain: 41923,
   'skale-base-sepolia': 324705682,
+  // Not in the v1 SDK map (v1 predates the chain); CAIP-2 eip155:999 accepts
+  // resolve through this entry.
+  hyperevm: 999,
 };
 
 const SvmNetworkToChainId: Record<string, number> = {

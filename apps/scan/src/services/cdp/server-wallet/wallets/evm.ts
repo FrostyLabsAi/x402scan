@@ -10,12 +10,16 @@ import { cdpResultFromPromise } from '../../result';
 
 import { convertTokenAmount } from '@/lib/token';
 
-import type { EvmChain } from '@/types/chain';
+import type { Chain, EvmChain } from '@/types/chain';
 import type { Address } from 'viem';
 import type { NetworkServerWallet } from './types';
 
+/** EVM chains the CDP server-wallet SDK can transact on — HyperEVM is indexed
+ * by the scanner but is NOT in CDP's network registry. */
+type CdpEvmChain = Exclude<EvmChain, Chain.HYPEREVM>;
+
 export const evmServerWallet =
-  <T extends EvmChain>(chain: T): NetworkServerWallet<EvmChain> =>
+  <T extends CdpEvmChain>(chain: T): NetworkServerWallet<EvmChain> =>
   (name: string) => {
     const getAccount = async () => {
       return await cdpClient.evm.getOrCreateAccount({ name });

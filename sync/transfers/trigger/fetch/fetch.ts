@@ -9,6 +9,7 @@ import { fetchWithOffsetPagination, fetchBitquery } from './bitquery/fetch';
 import { fetchBigQuery } from './bigquery/fetch';
 import { logger } from '@trigger.dev/sdk';
 import { fetchCDP } from './cdp/fetch';
+import { fetchHyperSync } from './hypersync/fetch';
 
 export async function fetchTransfers(
   config: SyncConfig,
@@ -106,6 +107,15 @@ async function fetchWithWindow(
         currentStart,
         currentEnd,
         0
+      );
+    }
+    if (provider === QueryProvider.HYPERSYNC) {
+      results = await fetchHyperSync(
+        config,
+        facilitator,
+        facilitatorConfig,
+        currentStart,
+        currentEnd
       );
     }
 

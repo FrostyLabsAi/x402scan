@@ -4,7 +4,14 @@
   "tasks": {
     "trigger:dev": {
       "description": "Start transfers sync jobs in development mode",
-      "env": ["CDP_*", "BITQUERY_*", "SOLANA_RPC_*", "GOOGLE_CLOUD_*"]
+      "env": [
+        "CDP_*",
+        "BITQUERY_*",
+        "SOLANA_RPC_*",
+        "GOOGLE_CLOUD_*",
+        "HYPERSYNC_*",
+        "HYPEREVM_RPC_URL"
+      ]
     },
     "trigger:deploy": {
       "description": "Deploy transfers sync jobs to Trigger.dev",
@@ -13,7 +20,9 @@
         "BITQUERY_*",
         "SOLANA_RPC_*",
         "GOOGLE_CLOUD_*",
-        "TRIGGER_*"
+        "TRIGGER_*",
+        "HYPERSYNC_*",
+        "HYPEREVM_RPC_URL"
       ]
     }
   }
