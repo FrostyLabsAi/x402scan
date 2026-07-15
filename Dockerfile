@@ -50,8 +50,11 @@ ENV NODE_ENV=production \
   PORT=3000 \
   SKIP_ENV_VALIDATION=
 EXPOSE 3000
-HEALTHCHECK --interval=30s --timeout=30s --start-period=90s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:3000/ || exit 1
+# NOTE: no container health check is declared here on purpose. Coolify greps
+# the whole Dockerfile for that instruction and then inspects .State.Health on
+# EVERY container built from it — including the headless `sync` container, which
+# has no health status and no HTTP port, breaking its deploy. Configure the
+# app's health check in Coolify's per-service UI instead (HTTP GET / port 3000).
 CMD ["sh", "-c", "node scripts/selfhost/db-init.mjs && pnpm --dir apps/scan start"]
 
 # ── sync runner ──────────────────────────────────────────────────────────────
@@ -61,9 +64,6 @@ ENV NODE_ENV=production
 # their built `dist/` — base only installs + generates Prisma, so build the
 # library packages here (the app target gets these via its own turbo build).
 RUN pnpm turbo run build --filter='./packages/**'
-# This is a headless loop with no HTTP server — explicitly clear any inherited
-# healthcheck so Coolify doesn't apply the app target's HTTP check and kill it.
-HEALTHCHECK NONE
 # 300s cadence over both chains; the runner refreshes the stats materialized
 # views after every pass (the UI reads those, not the raw table).
 CMD ["pnpm", "--dir", "sync/transfers", "exec", "tsx", "runner/run-sync.ts", "--loop", "300", "hyperevm", "base"]
