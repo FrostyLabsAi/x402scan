@@ -57,6 +57,10 @@ CMD ["sh", "-c", "node scripts/selfhost/db-init.mjs && pnpm --dir apps/scan star
 # ── sync runner ──────────────────────────────────────────────────────────────
 FROM base AS sync
 ENV NODE_ENV=production
+# The runner imports workspace packages (facilitators, transfers-db, …) by
+# their built `dist/` — base only installs + generates Prisma, so build the
+# library packages here (the app target gets these via its own turbo build).
+RUN pnpm turbo run build --filter='./packages/**'
 # This is a headless loop with no HTTP server — explicitly clear any inherited
 # healthcheck so Coolify doesn't apply the app target's HTTP check and kill it.
 HEALTHCHECK NONE
