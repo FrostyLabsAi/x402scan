@@ -57,6 +57,9 @@ CMD ["sh", "-c", "node scripts/selfhost/db-init.mjs && pnpm --dir apps/scan star
 # ── sync runner ──────────────────────────────────────────────────────────────
 FROM base AS sync
 ENV NODE_ENV=production
+# This is a headless loop with no HTTP server — explicitly clear any inherited
+# healthcheck so Coolify doesn't apply the app target's HTTP check and kill it.
+HEALTHCHECK NONE
 # 300s cadence over both chains; the runner refreshes the stats materialized
 # views after every pass (the UI reads those, not the raw table).
 CMD ["pnpm", "--dir", "sync/transfers", "exec", "tsx", "runner/run-sync.ts", "--loop", "300", "hyperevm", "base"]
