@@ -35,7 +35,7 @@ export const HomeHeading = () => {
           <div className="flex items-center gap-2 min-w-0">
             <Logo className="size-8" />
             <h1 className="text-2xl md:text-4xl font-bold font-mono">
-              x402scan
+              FrostyScan
             </h1>
           </div>
           <Link href="/resources/register" className="hidden md:block shrink-0">
@@ -46,7 +46,7 @@ export const HomeHeading = () => {
           </Link>
         </div>
         <p className="text-muted-foreground text-sm">
-          The x402 analytics dashboard and block explorer
+          The FrostyFi ecosystem&apos;s x402 analytics dashboard and block explorer
         </p>
       </div>
       <div
@@ -74,7 +74,7 @@ export const HomeHeading = () => {
               setInput('');
             }
           }}
-          placeholder="Try: send email, generate image, search the web, buy a mug…"
+          placeholder="Try: check gas prices, query Hyperliquid intel, explore paid APIs…"
           className="pl-9 pr-9 h-11 bg-transparent"
           autoComplete="off"
           name="home-search"

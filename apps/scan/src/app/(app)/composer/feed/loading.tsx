@@ -4,7 +4,7 @@ import { LoadingFeedTable } from '../_components/feed-table';
 export default function LoadingFeedPage() {
   return (
     <div>
-      <Heading title="Feed" description="Recent x402scan agent activities" />
+      <Heading title="Feed" description="Recent FrostyScan agent activities" />
       <Body>
         <LoadingFeedTable limit={15} />
       </Body>

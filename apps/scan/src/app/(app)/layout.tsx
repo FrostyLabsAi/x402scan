@@ -33,7 +33,7 @@ export default function AppLayout({ children, breadcrumbs }: LayoutProps<'/'>) {
               <NavbarSearchButton />
               <NavbarAuthButton />
               <a
-                href="https://github.com/Merit-Systems/x402scan"
+                href="https://github.com/FrostyLabsAi/x402scan"
                 target="_blank"
                 rel="noreferrer"
               >

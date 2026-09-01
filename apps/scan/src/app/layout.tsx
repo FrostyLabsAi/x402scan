@@ -36,12 +36,12 @@ const geistMono = Geist_Mono({
 });
 
 const siteDescription =
-  'Explore the x402 ecosystem. View transactions, sellers, origins and resources. Explore the future of agentic commerce.';
+  'Explore the FrostyFi x402 ecosystem. View transactions, sellers, origins and resources on Base and HyperEVM.';
 
 export const metadata: Metadata = {
   title: {
-    default: 'x402scan | x402 Ecosystem Explorer',
-    template: '%s | x402scan',
+    default: 'FrostyScan | FrostyFi x402 Explorer',
+    template: '%s | FrostyScan',
   },
   description: siteDescription,
   keywords: [
@@ -56,9 +56,9 @@ export const metadata: Metadata = {
     'analytics',
     'sellers',
   ],
-  authors: [{ name: 'x402scan' }],
-  creator: 'x402scan',
-  publisher: 'x402scan',
+  authors: [{ name: 'FrostyLabs' }],
+  creator: 'FrostyLabs',
+  publisher: 'FrostyLabs',
   robots: {
     index: true,
     follow: true,
@@ -71,7 +71,7 @@ export const metadata: Metadata = {
     },
   },
   appleWebApp: {
-    title: 'x402scan',
+    title: 'FrostyScan',
     statusBarStyle: 'black-translucent',
   },
   metadataBase: new URL(env.NEXT_PUBLIC_APP_URL),
@@ -97,7 +97,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'x402scan',
+      name: 'FrostyScan',
       url: appUrl,
       description: siteDescription,
       potentialAction: {
@@ -109,7 +109,7 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'x402scan',
+      name: 'FrostyScan',
       url: appUrl,
       sameAs: [
         'https://github.com/Merit-Systems/x402scan',

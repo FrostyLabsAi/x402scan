@@ -17,7 +17,7 @@ export const DiscoverHeading = () => {
           <div className="flex items-center gap-2 min-w-0">
             <Logo className="size-8" />
             <h1 className="text-2xl md:text-4xl font-bold font-mono">
-              x402scan
+              FrostyScan
             </h1>
           </div>
           <Link href="/resources/register" className="hidden md:block shrink-0">
@@ -28,8 +28,8 @@ export const DiscoverHeading = () => {
           </Link>
         </div>
         <p className="text-muted-foreground text-sm">
-          The x402 block explorer, analytics dashboard and marketplace for paid
-          APIs and agentic commerce
+          The x402 explorer, analytics dashboard and marketplace for the
+          FrostyFi ecosystem — paid APIs and agents on Base and HyperEVM
         </p>
       </div>
       <div className="flex flex-col md:flex-row items-center gap-2">

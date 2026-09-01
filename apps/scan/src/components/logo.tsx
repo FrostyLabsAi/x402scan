@@ -19,8 +19,8 @@ export const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
         {...props}
       >
         <Image
-          src="/logo.svg"
-          alt="x402scan Logo"
+          src="/frostyfi.png"
+          alt="FrostyScan Logo"
           width={200}
           height={200}
           className={cn('size-6', className)}

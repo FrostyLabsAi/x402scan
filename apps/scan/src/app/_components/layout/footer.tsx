@@ -64,25 +64,26 @@ export function Footer() {
           <Link href="/" className="flex items-center gap-2 group">
             <Logo className="size-5" />
             <span className="font-medium group-hover:text-foreground transition-colors font-mono">
-              x402scan
+              FrostyScan
             </span>
           </Link>
 
           <a
-            href="https://merit.systems"
+            title="Built on x402scan by Merit Systems"
+            href="https://github.com/Merit-Systems/x402scan"
             target="_blank"
             rel="noopener noreferrer"
             className="md:absolute md:left-1/2 md:-translate-x-1/2 flex items-center gap-1.5 hover:text-foreground transition-colors"
           >
             {MERIT_ICON_SVG}
             <span className="hidden md:inline font-medium font-mono text-xs tracking-widest uppercase">
-              Merit
+              Built on x402scan by Merit
             </span>
           </a>
 
           <div className="flex items-center gap-4 md:gap-6">
             <a
-              href="https://github.com/Merit-Systems/x402scan"
+              href="https://github.com/FrostyLabsAi/x402scan"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"

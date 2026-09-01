@@ -48,7 +48,7 @@ export const DiscoverSearchInput = () => {
             clear();
           }
         }}
-        placeholder="Try: send email, generate image, search the web, buy a mug…"
+        placeholder="Try: check gas prices, query Hyperliquid intel, explore paid APIs…"
         className="pl-9 pr-9 h-11 bg-transparent"
         autoComplete="off"
         name="discover-search"

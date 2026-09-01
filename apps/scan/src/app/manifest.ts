@@ -2,10 +2,10 @@ import type { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'x402scan',
-    short_name: 'x402scan',
+    name: 'FrostyScan',
+    short_name: 'FrostyScan',
     description:
-      'Explore the x402 ecosystem. View transactions, sellers, origins and resources. Explore the future of agentic commerce.',
+      'Explore the FrostyFi x402 ecosystem. View transactions, sellers, origins and resources on Base and HyperEVM.',
     start_url: '/',
     display: 'standalone',
     theme_color: '#ffffff',

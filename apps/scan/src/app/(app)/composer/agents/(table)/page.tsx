@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Agents',
-  description: 'Discover the most popular agents on x402scan',
+  description: 'Discover the most popular agents on FrostyScan',
 };
 
 export default function AgentsPage() {
@@ -19,7 +19,7 @@ export default function AgentsPage() {
       <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <Heading
           title="Agents"
-          description="Discover the most popular agents on x402scan"
+          description="Discover the most popular agents on FrostyScan"
           actions={<RangeSelector />}
         />
         <Body>

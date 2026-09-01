@@ -71,7 +71,7 @@ const ActivityContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <Section
       title="Overall Stats"
-      description="Global statistics for the x402 ecosystem"
+      description="Statistics for the FrostyFi ecosystem"
       actions={
         <div className="flex items-center gap-2">
           <ChartModeSelector />

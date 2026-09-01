@@ -11,7 +11,7 @@ export default function BreadcrumbLayout({
         href="/"
         image={null}
         Fallback={null}
-        name="x402scan"
+        name="FrostyScan"
         textClassName="font-semibold font-mono"
         mobileHideText
       />
