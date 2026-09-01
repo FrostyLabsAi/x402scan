@@ -112,8 +112,8 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
       name: 'FrostyScan',
       url: appUrl,
       sameAs: [
-        'https://github.com/Merit-Systems/x402scan',
-        'https://x.com/x402scan',
+        'https://github.com/FrostyLabsAi/x402scan',
+        'https://x.com/FrostyLabsAI',
       ],
     },
   ];
