@@ -98,7 +98,7 @@ export function Footer() {
               />
             </a>
             <a
-              href="https://x.com/x402scan"
+              href="https://x.com/FrostyLabsAI"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-foreground transition-colors"
