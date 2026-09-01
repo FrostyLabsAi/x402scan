@@ -22,9 +22,9 @@ const faqs = [
       'A client requests a paid resource, the server responds with 402 Payment Required, the client pays, retries the request, and receives API access.',
   },
   {
-    question: 'What is x402scan?',
+    question: 'What is FrostyScan?',
     answer:
-      'x402scan is an explorer, marketplace, and analytics dashboard for x402 servers, resources, facilitators, transactions, buyers, and sellers.',
+      'FrostyScan is an explorer, marketplace, and analytics dashboard for x402 servers, resources, facilitators, transactions, buyers, and sellers.',
   },
   {
     question: 'Do x402 APIs need subscriptions or API keys?',
@@ -42,7 +42,7 @@ const jsonLd = [
     description,
     isPartOf: {
       '@type': 'WebSite',
-      name: 'x402scan',
+      name: 'FrostyScan',
       url: appUrl,
     },
   },
@@ -79,7 +79,7 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    name: 'x402scan',
+    name: 'FrostyScan',
     applicationCategory: 'DeveloperApplication',
     operatingSystem: 'Web',
     url: appUrl,
@@ -155,8 +155,8 @@ export function X402Content() {
         </Section>
 
         <Section
-          title="Explore x402 on x402scan"
-          description="x402scan indexes the services, payments, and infrastructure behind the x402 ecosystem."
+          title="Explore x402 on FrostyScan"
+          description="FrostyScan indexes the services, payments, and infrastructure behind the x402 ecosystem."
         >
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <Link

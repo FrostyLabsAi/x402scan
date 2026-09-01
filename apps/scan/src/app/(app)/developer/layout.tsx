@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Developer Hub',
-  description: 'Developer tools for x402scan',
+  description: 'Developer tools for FrostyScan',
 };
 
 export default function DeveloperLayout({

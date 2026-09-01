@@ -150,7 +150,7 @@ export default function DiscoverySpecPage() {
         <section className="space-y-3">
           <h2 className="text-xl font-semibold">Test your API</h2>
           <p className="text-sm text-muted-foreground">
-            Run discovery against your origin to see what x402scan resolves
+            Run discovery against your origin to see what FrostyScan resolves
             before you register.
           </p>
           <TryDiscovery />
@@ -315,7 +315,7 @@ export default function DiscoverySpecPage() {
         <section className="space-y-3">
           <h2 className="text-xl font-semibold">Discovery Precedence</h2>
           <p className="text-sm text-muted-foreground">
-            x402scan uses the OpenAPI document at <code>/openapi.json</code> to
+            FrostyScan uses the OpenAPI document at <code>/openapi.json</code> to
             discover your API. It will also check the runtime <code>402</code>{' '}
             challenge behavior to ensure it is correct.
           </p>
@@ -411,7 +411,7 @@ export default function DiscoverySpecPage() {
           <h2 className="text-xl font-semibold">Endpoint-Only Fallback</h2>
           <p className="text-sm text-muted-foreground">
             If no OpenAPI document exists, a single endpoint URL can still be
-            registered. x402scan probes the URL directly via{' '}
+            registered. FrostyScan probes the URL directly via{' '}
             <code>checkEndpointSchema</code> from{' '}
             <code>@agentcash/discovery</code>.
           </p>

@@ -219,7 +219,7 @@ export const ShareModal: React.FC<Props> = ({
   const handleDownload = () => {
     if (!screenshotUrl) return;
     const link = document.createElement('a');
-    link.download = `${originTitle.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}-x402scan.png`;
+    link.download = `${originTitle.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase()}-frostyscan.png`;
     link.href = screenshotUrl;
     link.click();
   };

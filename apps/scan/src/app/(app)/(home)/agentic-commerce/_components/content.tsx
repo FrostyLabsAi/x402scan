@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { env } from '@/env';
 
 const description =
-  'Learn how AI agents discover, pay for, and use APIs through x402 payments, discovery specs, and x402scan listings.';
+  'Learn how AI agents discover, pay for, and use APIs through x402 payments, discovery specs, and FrostyScan listings.';
 
 const appUrl = env.NEXT_PUBLIC_APP_URL.replace(/\/$/, '');
 
@@ -22,9 +22,9 @@ const faqs = [
       'Agents can use open payment standards such as x402 to receive a 402 Payment Required challenge, pay per request, and retry the API call automatically.',
   },
   {
-    question: 'What role does x402scan play?',
+    question: 'What role does FrostyScan play?',
     answer:
-      'x402scan is the marketplace, explorer, and analytics layer where x402 services can be listed, discovered, and measured.',
+      'FrostyScan is the marketplace, explorer, and analytics layer where x402 services can be listed, discovered, and measured.',
   },
   {
     question: 'What role does AgentCash play?',
@@ -42,7 +42,7 @@ const jsonLd = [
     description,
     isPartOf: {
       '@type': 'WebSite',
-      name: 'x402scan',
+      name: 'FrostyScan',
       url: appUrl,
     },
   },
@@ -144,13 +144,13 @@ export function AgenticCommerceContent() {
         </Section>
 
         <Section
-          title="The x402scan role"
-          description="x402scan is the public marketplace and analytics layer for x402 services."
+          title="The FrostyScan role"
+          description="FrostyScan is the public marketplace and analytics layer for x402 services."
         >
           <div className="max-w-3xl space-y-3 text-sm leading-6 text-muted-foreground">
             <p>
               x402 is the payment standard, AgentCash is the MCP for discovering
-              and paying for premium APIs, and x402scan is where those services
+              and paying for premium APIs, and FrostyScan is where those services
               become visible.
             </p>
             <p>
@@ -163,7 +163,7 @@ export function AgenticCommerceContent() {
 
         <Section
           title="Enter the agent market"
-          description="Register your API on x402scan and publish discovery metadata so agents can understand and call it."
+          description="Register your API on FrostyScan and publish discovery metadata so agents can understand and call it."
         >
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
             <Link

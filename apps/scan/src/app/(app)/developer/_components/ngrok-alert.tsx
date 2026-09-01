@@ -47,7 +47,7 @@ export function NgrokAlert({ port }: NgrokAlertProps) {
           </h3>
           <div className="text-sm space-y-3 text-muted-foreground">
             <p>
-              x402scan runs in production and can&apos;t reach localhost URLs.
+              FrostyScan runs in production and can&apos;t reach localhost URLs.
               Use <strong>ngrok</strong> to create a public tunnel to your local
               server.
             </p>

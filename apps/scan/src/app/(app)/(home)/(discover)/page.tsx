@@ -58,7 +58,7 @@ export default async function DiscoverPage({
                 />
                 <Section
                   title="Featured Services"
-                  description="x402scan curated services"
+                  description="FrostyScan curated services"
                   actions={
                     <div className="flex items-center gap-2">
                       <RangeSelector />

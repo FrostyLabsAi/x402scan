@@ -37,7 +37,7 @@ export async function generateMetadata({
   const title = origin.title ? cleanExternalText(origin.title) : origin.origin;
   const description = origin.description
     ? cleanExternalText(origin.description)
-    : `Explore ${title} on x402scan`;
+    : `Explore ${title} on FrostyScan`;
 
   const imageUrl = origin.ogImages?.[0]?.url
     ? new URL(origin.ogImages[0].url, env.NEXT_PUBLIC_APP_URL).toString()

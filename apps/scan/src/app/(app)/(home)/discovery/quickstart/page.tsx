@@ -34,7 +34,7 @@ export default function QuickstartPage() {
               <code>WWW-Authenticate</code> header.
             </li>
             <li>
-              Register the origin on x402scan so we can track usage and surface
+              Register the origin on FrostyScan so we can track usage and surface
               it to agents.
             </li>
           </ol>
@@ -43,7 +43,7 @@ export default function QuickstartPage() {
         <section className="space-y-3">
           <h2 className="text-xl font-semibold">Test your API</h2>
           <p className="text-sm text-muted-foreground">
-            Run discovery against your origin to see what x402scan resolves
+            Run discovery against your origin to see what FrostyScan resolves
             before you register.
           </p>
           <TryDiscovery />

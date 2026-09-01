@@ -11,7 +11,7 @@ export interface EmptyStateProps {
 }
 
 export const EmptyState: React.FC<EmptyStateProps> = ({
-  title = 'x402scan Composer',
+  title = 'FrostyScan Composer',
   description = 'A playground for building agents that use x402 resources',
   icon = (
     <Card className="p-2 border-primary/70 shadow-[0_0_4px_0px_color-mix(in_oklch,var(--primary)_70%,transparent)]">

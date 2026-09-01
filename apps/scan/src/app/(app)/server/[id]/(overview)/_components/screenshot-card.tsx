@@ -421,7 +421,7 @@ export const ScreenshotCard: React.FC<Props> = ({
                   color: '#0a0a0a',
                 }}
               >
-                x402scan
+                FrostyScan
               </span>
             </div>
           </div>

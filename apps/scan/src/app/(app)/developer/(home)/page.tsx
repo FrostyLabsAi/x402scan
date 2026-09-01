@@ -6,7 +6,7 @@ export default function DeveloperPage() {
     <div>
       <Heading
         title="Resource Preview"
-        description="Quickly preview an x402 endpoint directly to see how it will appear in the x402scan app."
+        description="Quickly preview an x402 endpoint directly to see how it will appear in the FrostyScan app."
       />
       <Body>
         <TestEndpointForm />

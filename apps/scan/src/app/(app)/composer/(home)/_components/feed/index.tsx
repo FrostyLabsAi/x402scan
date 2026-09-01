@@ -29,7 +29,7 @@ const FeedContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <Section
       title="Feed"
-      description="Recent x402scan agent activities"
+      description="Recent FrostyScan agent activities"
       href="/composer/feed"
     >
       {children}

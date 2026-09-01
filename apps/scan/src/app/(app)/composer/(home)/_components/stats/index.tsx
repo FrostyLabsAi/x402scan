@@ -42,7 +42,7 @@ const ActivityContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <Section
       title="Overall Stats"
-      description="Global agent usage on x402scan"
+      description="Global agent usage on FrostyScan"
       actions={<RangeSelector />}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">

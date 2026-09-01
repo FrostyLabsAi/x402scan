@@ -45,7 +45,7 @@ export const ConnectDialog: React.FC<Props> = ({ agentConfig }) => {
               <AlertDialogTitle>
                 {agentConfig
                   ? `Welcome to ${agentConfig.name}`
-                  : 'Welcome to x402scan Composer'}
+                  : 'Welcome to FrostyScan Composer'}
               </AlertDialogTitle>
               <AlertDialogDescription className="text-xs font-mono">
                 {agentConfig?.description ??

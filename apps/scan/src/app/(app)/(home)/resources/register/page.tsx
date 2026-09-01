@@ -9,7 +9,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Add API',
-  description: 'Register your x402-compatible API on x402scan.',
+  description: 'Register your x402-compatible API on FrostyScan.',
 };
 
 export default function RegisterResourcePage() {
