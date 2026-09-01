@@ -13,7 +13,14 @@ export type EcosystemCategory = (typeof ecosystemCategories)[number];
 export const ecosystemItemSchema = z.object({
   name: z.string(),
   description: z.string(),
-  logoUrl: z.string().transform(path => `https://www.x402.org${path}`),
+  logoUrl: z
+    .string()
+    // x402.org stopped serving /logos/* — load them from the x402 repo instead.
+    .transform(path =>
+      path.startsWith('http')
+        ? path
+        : `https://raw.githubusercontent.com/coinbase/x402/main/typescript/site/public${path}`
+    ),
   websiteUrl: z.url(),
   category: z.enum(ecosystemCategories),
 });

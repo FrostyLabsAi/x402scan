@@ -47,7 +47,7 @@ const syncEcosystem = async () => {
   );
 
   // Write to list.ts
-  const outputPath = path.join(__dirname, '../lib/ecosystem/list.ts');
+  const outputPath = path.join(import.meta.dirname, '../lib/ecosystem/list.ts');
 
   const formatEcosystemArray = (items: EcosystemItem[]): string => {
     const itemStrings = items.map(

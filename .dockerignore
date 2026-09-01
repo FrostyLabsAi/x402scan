@@ -1,0 +1,13 @@
+node_modules
+**/node_modules
+**/.next
+**/.turbo
+**/dist
+.git
+**/.env
+**/.env.*
+!**/.env.example
+Dockerfile
+X402SCAN_DEPLOY.md
+*.md
+!README.md

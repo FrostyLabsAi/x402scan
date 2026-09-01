@@ -8,7 +8,7 @@ import { ResourceHeader } from '../../_components/resource-header';
 import { InvocationsTable } from '../../_components/invocations-table';
 import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 function decodeResourceId(resourceId: string): string {
   try {
@@ -41,7 +41,7 @@ export default async function ResourcePage({
   return (
     <Body className="pt-0">
       <HydrateClient>
-        <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+        <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
           <div className="flex justify-between items-center mb-2">
             <div>
               <h2 className="text-xl font-bold">Observability</h2>

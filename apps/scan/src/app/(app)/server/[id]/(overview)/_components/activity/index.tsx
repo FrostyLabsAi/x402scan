@@ -8,7 +8,7 @@ import { api } from '@/trpc/client';
 
 import { convertTokenAmount, formatTokenAmount } from '@/lib/token';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
 import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 import { useTimeRangeContext } from '@/app/(app)/_contexts/time-range/hook';
@@ -20,7 +20,7 @@ interface Props {
 
 export const OriginActivity: React.FC<Props> = ({ originId }) => {
   return (
-    <TimeRangeProvider initialTimeframe={ActivityTimeframe.ThirtyDays}>
+    <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
       <OriginActivityContent originId={originId} />
     </TimeRangeProvider>
   );

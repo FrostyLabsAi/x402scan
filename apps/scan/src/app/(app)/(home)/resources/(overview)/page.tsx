@@ -12,7 +12,7 @@ import { MARKETPLACE_CAROUSELS } from './carousels';
 import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
 import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import type { Metadata } from 'next';
 
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default function MarketplacePage() {
   return (
-    <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+    <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
       <Heading
         title="Marketplace"
         description="Explore the most popular x402 servers"

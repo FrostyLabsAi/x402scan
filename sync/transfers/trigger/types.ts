@@ -39,6 +39,7 @@ export enum QueryProvider {
   BITQUERY = 'bitquery',
   BIGQUERY = 'bigquery',
   CDP = 'cdp',
+  HYPERSYNC = 'hypersync',
 }
 
 interface BaseQueryConfig {

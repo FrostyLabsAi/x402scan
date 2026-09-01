@@ -2,6 +2,11 @@ import type { MetadataRoute } from 'next';
 
 import { scanDb } from '@x402scan/scan-db';
 
+// FORK-ONLY: render at request time — the sitemap queries the DB, which is
+// unavailable during a Docker image build (upstream builds on Vercel with
+// live env, so they can prerender it).
+export const dynamic = 'force-dynamic';
+
 import { env } from '@/env';
 import { facilitators } from '@/lib/facilitators';
 

@@ -8,7 +8,9 @@ import type { FacilitatorMetadata } from 'facilitators';
 import type { MixedAddress } from '@/types/address';
 
 // NOTE(shafu): Minimum number of transactions required for a facilitator to be displayed
-export const MIN_FACILITATOR_TRANSACTIONS = 100;
+// FORK-ONLY: lowered from 100 — a young self-hosted instance should show its
+// facilitators from the first settlement.
+export const MIN_FACILITATOR_TRANSACTIONS = 1;
 
 export type Facilitator = FacilitatorMetadata & {
   id: string;
@@ -19,6 +21,7 @@ const chainMap: Record<FacilitatorsNetwork, Chain> = {
   [FacilitatorsNetwork.BASE]: Chain.BASE,
   [FacilitatorsNetwork.POLYGON]: Chain.POLYGON,
   [FacilitatorsNetwork.SOLANA]: Chain.SOLANA,
+  [FacilitatorsNetwork.HYPEREVM]: Chain.HYPEREVM,
 };
 
 function parseFacilitatorAddress(address: string): MixedAddress | null {

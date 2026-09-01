@@ -28,12 +28,13 @@
     "p-limit": "^7.2.0"
   },
   "devDependencies": {
-    "@x402scan/eslint-config": "workspace:*",
-    "@x402scan/typescript-config": "workspace:*",
     "@trigger.dev/build": "catalog:trigger",
     "@types/node": "catalog:",
+    "@x402scan/eslint-config": "workspace:*",
+    "@x402scan/typescript-config": "workspace:*",
     "eslint": "catalog:",
     "trigger.dev": "catalog:trigger",
+    "tsx": "catalog:",
     "typescript": "catalog:"
   }
 }

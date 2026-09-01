@@ -6,7 +6,7 @@ import { ErrorRateChart } from './_components/error-rate-chart';
 import { ResourcesTable } from './_components/resources-table';
 import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 import { ObservabilityBanner } from './_components/observability-banner';
 
 export default async function ObservabilityPage({
@@ -23,7 +23,7 @@ export default async function ObservabilityPage({
     <Body className="pt-0">
       <HydrateClient>
         <ObservabilityBanner />
-        <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+        <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
           <div className="flex justify-between items-center mb-2">
             <div>
               <h2 className="text-xl font-bold">Observability</h2>

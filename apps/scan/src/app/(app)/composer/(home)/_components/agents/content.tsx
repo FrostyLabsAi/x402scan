@@ -2,11 +2,11 @@
 
 import { api } from '@/trpc/client';
 import { AgentCard } from '../lib/agent-card';
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 export const AgentsContent: React.FC = () => {
   const [topAgents] = api.public.agents.list.useSuspenseQuery({
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     pagination: {
       page: 0,
       page_size: 10,

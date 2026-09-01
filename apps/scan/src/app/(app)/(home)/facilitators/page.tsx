@@ -22,7 +22,7 @@ import { api, HydrateClient } from '@/trpc/server';
 
 import { getChainForPage } from '@/app/(app)/_lib/chain/page';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import type { Metadata } from 'next';
 
@@ -40,11 +40,11 @@ export default async function FacilitatorsPage({
 
   void api.public.facilitators.bucketedStatistics.prefetch({
     numBuckets: 48,
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     chain,
   });
   void api.public.stats.overall.prefetch({
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     chain,
   });
   void api.public.facilitators.list.prefetch({
@@ -52,13 +52,13 @@ export default async function FacilitatorsPage({
       page_size: PAGE_SIZE,
     },
     sorting: defaultFacilitatorsSorting,
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     chain,
   });
 
   return (
     <HydrateClient>
-      <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+      <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <FacilitatorsSortingProvider
           initialSorting={defaultFacilitatorsSorting}
         >

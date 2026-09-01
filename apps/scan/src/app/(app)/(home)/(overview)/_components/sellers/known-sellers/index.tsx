@@ -14,7 +14,7 @@ import { SellersSortingProvider } from '@/app/(app)/_contexts/sorting/sellers/pr
 import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
 import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import type { Chain } from '@/types/chain';
 
@@ -28,14 +28,14 @@ export const TopServers: React.FC<Props> = ({ chain }) => {
     pagination: {
       page_size: 100,
     },
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     sorting: defaultSellersSorting,
   });
 
   return (
     <HydrateClient>
       <SellersSortingProvider initialSorting={defaultSellersSorting}>
-        <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+        <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
           <TopServersContainer>
             <ErrorBoundary
               fallback={

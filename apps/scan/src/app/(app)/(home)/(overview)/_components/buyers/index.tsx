@@ -17,7 +17,7 @@ import { defaultBuyersSorting } from '../../../../_contexts/sorting/buyers/defau
 
 import { api, HydrateClient } from '@/trpc/server';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import type { Chain } from '@/types/chain';
 
@@ -35,12 +35,12 @@ export const AllBuyers: React.FC<Props> = ({ chain }) => {
       page_size: pageSize,
       page: 0,
     },
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
   });
 
   return (
     <HydrateClient>
-      <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+      <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <BuyersSortingProvider initialSorting={defaultBuyersSorting}>
           <AllBuyersContainer>
             <ErrorBoundary

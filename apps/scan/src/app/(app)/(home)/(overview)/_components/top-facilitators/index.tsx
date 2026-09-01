@@ -14,7 +14,7 @@ import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
 
 import { facilitatorAddresses, facilitators } from '@/lib/facilitators';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import type { Chain } from '@/types/chain';
 
@@ -29,19 +29,19 @@ export const TopFacilitators: React.FC<Props> = ({ chain }) => {
 
   void api.public.stats.overall.prefetch({
     chain,
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
   });
   void api.public.facilitators.list.prefetch({
     chain,
     pagination: {
       page_size: chainFacilitators.length,
     },
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
   });
 
   return (
     <HydrateClient>
-      <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+      <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <FacilitatorsSection>
           <Suspense fallback={<LoadingTopFacilitatorsContent />}>
             <TopFacilitatorsContent />

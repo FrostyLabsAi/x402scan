@@ -15,7 +15,9 @@ import { ChartModeProvider } from '@/app/(app)/_contexts/chart-mode/provider';
 
 import { api, HydrateClient } from '@/trpc/server';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
+
+import type { ActivityTimeframe } from '@/types/timeframes';
 
 import type { Chain } from '@/types/chain';
 
@@ -26,7 +28,7 @@ interface Props {
 
 export const OverallStats: React.FC<Props> = ({
   chain,
-  initialTimeframe = ActivityTimeframe.OneDay,
+  initialTimeframe = DEFAULT_TIMEFRAME,
 }) => {
   void api.public.stats.overall.prefetch({
     timeframe: initialTimeframe,

@@ -27,6 +27,7 @@ export const EcosystemCard: React.FC<Props> = ({ item, showBadge }) => {
               width={16}
               height={16}
               className="rounded-md"
+              unoptimized
             />
             <CardTitle>{item.name}</CardTitle>
           </div>
