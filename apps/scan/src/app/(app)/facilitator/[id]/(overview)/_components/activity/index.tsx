@@ -12,7 +12,7 @@ import { ActivityCharts, LoadingActivityCharts } from './charts';
 
 import { api, HydrateClient } from '@/trpc/server';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import type { Chain } from '@/types/chain';
 
@@ -42,16 +42,16 @@ const ActivityContainer = ({
 export const Activity: React.FC<Props> = ({ facilitatorId }) => {
   void api.public.stats.bucketed.prefetch({
     facilitatorIds: [facilitatorId],
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
   });
   void api.public.stats.overall.prefetch({
     facilitatorIds: [facilitatorId],
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
   });
 
   return (
     <HydrateClient>
-      <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+      <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <ActivityContainer>
           <ErrorBoundary
             fallback={<p>There was an error loading the activity data</p>}

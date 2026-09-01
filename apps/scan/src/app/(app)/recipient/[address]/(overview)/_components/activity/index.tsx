@@ -13,7 +13,7 @@ import { api, HydrateClient } from '@/trpc/server';
 
 import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 interface Props {
   address: string;
@@ -43,19 +43,19 @@ export const Activity: React.FC<Props> = async ({ address }) => {
       recipients: {
         include: [address],
       },
-      timeframe: ActivityTimeframe.OneDay,
+      timeframe: DEFAULT_TIMEFRAME,
     }),
     api.public.stats.overall.prefetch({
       recipients: {
         include: [address],
       },
-      timeframe: ActivityTimeframe.OneDay,
+      timeframe: DEFAULT_TIMEFRAME,
     }),
   ]);
 
   return (
     <HydrateClient>
-      <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+      <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <ActivityContainer>
           <ErrorBoundary
             fallback={<p>There was an error loading the activity data</p>}

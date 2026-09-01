@@ -16,7 +16,7 @@ import { api, HydrateClient } from '@/trpc/server';
 
 import { getChainForPage } from '@/app/(app)/_lib/chain/page';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import type { Metadata } from 'next';
 
@@ -32,22 +32,22 @@ export default async function NetworksPage({
 
   void api.networks.bucketedStatistics.prefetch({
     numBuckets: 48,
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     chain,
   });
   void api.public.stats.overall.prefetch({
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     chain,
   });
   void api.networks.list.prefetch({
     sorting: defaultNetworksSorting,
-    timeframe: ActivityTimeframe.OneDay,
+    timeframe: DEFAULT_TIMEFRAME,
     chain,
   });
 
   return (
     <HydrateClient>
-      <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+      <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <NetworksSortingProvider initialSorting={defaultNetworksSorting}>
           <Heading
             title="Networks"

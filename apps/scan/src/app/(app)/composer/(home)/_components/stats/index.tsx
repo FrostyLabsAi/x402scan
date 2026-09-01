@@ -10,13 +10,13 @@ import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 
 import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 // Note: No HydrateClient here - parent page.tsx provides it
 // Prefetch is done in page.tsx
 export const OverallStats = () => {
   return (
-    <TimeRangeProvider initialTimeframe={ActivityTimeframe.SevenDays}>
+    <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
       <ActivityContainer>
         <ErrorBoundary
           fallback={<p>There was an error loading the activity data</p>}

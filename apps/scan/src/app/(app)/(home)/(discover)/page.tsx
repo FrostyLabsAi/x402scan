@@ -24,7 +24,7 @@ import { SellersSortingProvider } from '@/app/(app)/_contexts/sorting/sellers/pr
 import { TimeRangeProvider } from '@/app/(app)/_contexts/time-range/provider';
 import { RangeSelector } from '@/app/(app)/_contexts/time-range/component';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { ActivityTimeframe, DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 export default async function DiscoverPage({
   searchParams,
@@ -46,7 +46,7 @@ export default async function DiscoverPage({
   return (
     <HydrateClient>
       <SellersSortingProvider initialSorting={defaultSellersSorting}>
-        <TimeRangeProvider initialTimeframe={ActivityTimeframe.ThirtyDays}>
+        <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
           <div>
             <DiscoverHeading />
             <Body>
@@ -54,7 +54,7 @@ export default async function DiscoverPage({
                 {/* <AgentCashAnnouncementBanner /> */}
                 <OverallStats
                   chain={chain}
-                  initialTimeframe={ActivityTimeframe.ThirtyDays}
+                  initialTimeframe={DEFAULT_TIMEFRAME}
                 />
                 <Section
                   title="Featured Services"

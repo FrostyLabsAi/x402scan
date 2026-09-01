@@ -16,7 +16,7 @@ import { BuyerSellersSortingProvider } from './sorting-provider';
 
 import { api, HydrateClient } from '@/trpc/server';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { ActivityTimeframe, DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 interface Props {
   address: string;
@@ -37,7 +37,7 @@ export const BuyerSellers: React.FC<Props> = ({ address }) => {
 
   return (
     <HydrateClient>
-      <TimeRangeProvider initialTimeframe={ActivityTimeframe.ThirtyDays}>
+      <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
         <BuyerSellersSortingProvider>
           <BuyerSellersContainer>
             <ErrorBoundary

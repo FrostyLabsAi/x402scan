@@ -8,7 +8,7 @@ import { OverallStats } from './_components/stats';
 import { Feed } from './_components/feed';
 import { YourAgents } from './_components/your-agents';
 import { api, HydrateClient } from '@/trpc/server';
-import { ActivityTimeframe } from '@/types/timeframes';
+import { ActivityTimeframe, DEFAULT_TIMEFRAME } from '@/types/timeframes';
 import { defaultToolsSorting } from '@/app/(app)/_contexts/sorting/tools/default';
 import { auth } from '@/auth';
 
@@ -19,7 +19,7 @@ export default async function ComposerPage() {
   const prefetches = [
     // Agents
     api.public.agents.list.prefetch({
-      timeframe: ActivityTimeframe.OneDay,
+      timeframe: DEFAULT_TIMEFRAME,
       pagination: {
         page: 0,
         page_size: 10,

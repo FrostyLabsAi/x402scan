@@ -14,7 +14,7 @@ import { ObservabilityBanner } from '@/app/(app)/server/[id]/observability/_comp
 
 import { facilitatorIdMap } from '@/lib/facilitators';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
 
 import { HydrateClient } from '@/trpc/server';
 
@@ -32,7 +32,7 @@ export default async function FacilitatorObservabilityPage({
     <Body className="pt-0">
       <HydrateClient>
         <ObservabilityBanner />
-        <TimeRangeProvider initialTimeframe={ActivityTimeframe.OneDay}>
+        <TimeRangeProvider initialTimeframe={DEFAULT_TIMEFRAME}>
           <div className="flex justify-between items-center mb-2">
             <div>
               <h2 className="text-xl font-bold">Observability</h2>

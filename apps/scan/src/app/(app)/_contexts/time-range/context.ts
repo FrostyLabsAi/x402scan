@@ -2,7 +2,9 @@
 
 import { createContext } from 'react';
 
-import { ActivityTimeframe } from '@/types/timeframes';
+import { DEFAULT_TIMEFRAME } from '@/types/timeframes';
+
+import type { ActivityTimeframe } from '@/types/timeframes';
 
 interface TimeRangeContextType {
   timeframe: ActivityTimeframe;
@@ -10,7 +12,7 @@ interface TimeRangeContextType {
 }
 
 export const TimeRangeContext = createContext<TimeRangeContextType>({
-  timeframe: ActivityTimeframe.OneDay,
+  timeframe: DEFAULT_TIMEFRAME,
   selectTimeframe: () => {
     void 0;
   },
