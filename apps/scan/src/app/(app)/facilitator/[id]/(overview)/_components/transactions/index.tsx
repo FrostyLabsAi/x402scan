@@ -28,7 +28,7 @@ export const LatestTransactions: React.FC<Props> = ({ facilitatorId }) => {
       page_size: pageSize,
     },
     facilitatorIds: [facilitatorId],
-    timeframe: ActivityTimeframe.ThirtyDays,
+    timeframe: ActivityTimeframe.AllTime,
     sorting: defaultTransfersSorting,
   });
 

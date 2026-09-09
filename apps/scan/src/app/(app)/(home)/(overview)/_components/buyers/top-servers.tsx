@@ -25,7 +25,7 @@ export const BuyerTopServers: React.FC<Props> = ({ sender }) => {
       page_size: 3,
       page: 0,
     },
-    timeframe: ActivityTimeframe.ThirtyDays,
+    timeframe: ActivityTimeframe.AllTime,
   });
 
   if (isLoading || !sellers) {

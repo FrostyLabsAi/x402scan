@@ -31,7 +31,7 @@ const stats: Stat[] = [
 export const StatsCardsContent: React.FC<Props> = ({ id }) => {
   const [overallStats] = api.public.stats.overall.useSuspenseQuery({
     facilitatorIds: [id],
-    timeframe: ActivityTimeframe.ThirtyDays,
+    timeframe: ActivityTimeframe.AllTime,
   });
 
   const values = [

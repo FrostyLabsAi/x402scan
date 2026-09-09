@@ -23,7 +23,7 @@ export default async function FacilitatorPage({
   // Prefetch stats for hydration
   void api.public.stats.overall.prefetch({
     facilitatorIds: [id],
-    timeframe: ActivityTimeframe.ThirtyDays,
+    timeframe: ActivityTimeframe.AllTime,
   });
 
   return (

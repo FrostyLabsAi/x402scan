@@ -28,7 +28,7 @@ export const LatestTransactionsTable: React.FC<Props> = ({
     },
     facilitatorIds: [facilitatorId],
     sorting,
-    timeframe: ActivityTimeframe.ThirtyDays,
+    timeframe: ActivityTimeframe.AllTime,
   });
 
   return (

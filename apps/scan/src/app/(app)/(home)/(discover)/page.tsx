@@ -39,7 +39,7 @@ export default async function DiscoverPage({
     pagination: {
       page_size: 400,
     },
-    timeframe: ActivityTimeframe.ThirtyDays,
+    timeframe: ActivityTimeframe.AllTime,
     sorting: defaultSellersSorting,
   });
 

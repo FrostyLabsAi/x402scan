@@ -58,7 +58,7 @@ export const ResourceCard: React.FC<Props> = ({
   ownershipVerified = false,
   accepts,
 }) => {
-  const prompt = `Use agentcash.dev to test out this resource's endpoint: ${bazaarMethod} ${resource.resource}`;
+  const prompt = `Test this x402 paid endpoint: ${bazaarMethod} ${resource.resource} — expect a 402 Payment Required with USDC payment instructions; pay via the x402 protocol and retry to get the result.`;
   const { isCopied, copyToClipboard } = useCopyToClipboard(() => {
     toast.success('Prompt copied to clipboard');
   });

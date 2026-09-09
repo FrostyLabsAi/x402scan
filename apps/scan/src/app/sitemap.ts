@@ -39,7 +39,6 @@ const staticRouteEntries = [
   },
   { url: url('/all'), changeFrequency: 'daily', priority: 0.65 },
   { url: url('/networks'), changeFrequency: 'daily', priority: 0.6 },
-  { url: url('/ecosystem'), changeFrequency: 'daily', priority: 0.6 },
   { url: url('/facilitators'), changeFrequency: 'daily', priority: 0.6 },
   { url: url('/mcp'), changeFrequency: 'weekly', priority: 0.55 },
   { url: url('/mcp/guide'), changeFrequency: 'weekly', priority: 0.5 },

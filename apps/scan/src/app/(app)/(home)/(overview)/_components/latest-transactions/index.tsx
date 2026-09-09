@@ -30,7 +30,7 @@ export const LatestTransactions: React.FC<Props> = ({ chain }) => {
       page: 0,
     },
     sorting: defaultTransfersSorting,
-    timeframe: ActivityTimeframe.ThirtyDays,
+    timeframe: ActivityTimeframe.AllTime,
   });
 
   return (

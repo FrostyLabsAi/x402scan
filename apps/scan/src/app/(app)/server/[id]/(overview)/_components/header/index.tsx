@@ -11,7 +11,6 @@ import { OriginStats, LoadingOriginStats } from './stats';
 
 import { cleanExternalText, truncateAtDelimiter, cn } from '@/lib/utils';
 
-import { HeaderButtons, LoadingHeaderButtons } from './buttons';
 
 import type { RouterOutputs } from '@/trpc/client';
 import { X402V2Badge } from '@/app/(app)/_components/x402/v2-badge';
@@ -75,7 +74,6 @@ export const HeaderCard: React.FC<Props> = ({ origin }) => {
                 : 'No Description'}
             </p>
           </div>
-          <HeaderButtons origin={origin} />
         </div>
         <div className="col-span-2">
           <Suspense fallback={<LoadingOriginStats />}>
@@ -105,7 +103,6 @@ export const LoadingHeaderCard = () => {
             <Skeleton className="w-48 h-[14px] my-[2px]" />
             <Skeleton className="w-64 h-[16px] my-[4px]" />
           </div>
-          <LoadingHeaderButtons />
         </div>
         <div className="col-span-2 overflow-hidden">
           <LoadingOriginStats />

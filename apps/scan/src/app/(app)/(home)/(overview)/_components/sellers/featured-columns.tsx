@@ -11,7 +11,6 @@ import {
   Server,
   Users,
 } from 'lucide-react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -205,35 +204,7 @@ export const featuredServiceColumns: ExtendedColumnDef<FeaturedServiceItem>[] =
     {
       accessorKey: 'tryIt',
       header: () => (
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <a
-              href="https://agentcash.dev"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Call all x402 resources with AgentCash"
-              className="mx-auto flex size-7 items-center justify-center rounded-md transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <Image
-                src="/agentcash-light.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="size-4 block dark:hidden"
-              />
-              <Image
-                src="/agentcash-dark.svg"
-                alt=""
-                width={16}
-                height={16}
-                className="size-4 hidden dark:block"
-              />
-            </a>
-          </TooltipTrigger>
-          <TooltipContent side="left" className="max-w-xs">
-            Call all x402 resources with AgentCash.
-          </TooltipContent>
-        </Tooltip>
+        <ArrowUpRight className="size-4 mx-auto text-muted-foreground" />
       ),
       cell: ({ row }) => {
         const origin = row.original.origins[0]?.origin;
@@ -319,7 +290,7 @@ const ServerCell: React.FC<{ item: FeaturedServiceItem }> = ({ item }) => {
  */
 const TryItButton: React.FC<{ origin: string }> = ({ origin }) => {
   const [copied, setCopied] = useState(false);
-  const prompt = `Use the agentcash \`discover\` command to tell me what I can do with ${origin}. If you do not have agentcash tools or skills installed, go directly to agentcash.dev/skill.md and set it up.`;
+  const prompt = `${origin} is an x402 paid API. Send it a request — you'll get a 402 Payment Required response listing the price, the USDC payment details, and the input schema. Pay via the x402 protocol (EIP-3009 transferWithAuthorization) and retry with the payment header to get the result.`;
 
   return (
     <Tooltip>
@@ -350,9 +321,7 @@ const TryItButton: React.FC<{ origin: string }> = ({ origin }) => {
           ) : (
             <>
               Copies an AI prompt to your clipboard. Paste into Claude, Cursor,
-              or any agent that supports{' '}
-              <span className="font-mono">agentcash</span> tools to explore this
-              service.
+              or any x402-capable agent to explore this service.
             </>
           )}
         </p>
