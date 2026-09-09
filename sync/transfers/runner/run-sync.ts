@@ -59,7 +59,13 @@ async function syncOnce(chains: string[]) {
     const now = new Date();
     for (const facilitator of config.facilitators) {
       console.log(`[run-sync] ${chain}: syncing ${facilitator.id}…`);
-      await syncFacilitator(config, facilitator, now);
+      try {
+        await syncFacilitator(config, facilitator, now);
+      } catch (error) {
+        // Per-chain isolation (2026-09-08): a hyperevm fetch failure used to
+        // abort the whole pass before base ever ran — each chain now fails alone.
+        console.error(`[run-sync] ${chain}:${facilitator.id} failed:`, error);
+      }
     }
   }
   await refreshMaterializedViews();

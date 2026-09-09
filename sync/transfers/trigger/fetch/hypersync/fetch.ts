@@ -90,6 +90,14 @@ export async function fetchHyperSync(
 
 // ── block-range conversion (RPC binary search) ───────────────────────────────
 
+/**
+ * Hard cap on any single upstream request. Without it a stalled HyperSync/RPC
+ * connection hangs the whole sync pass for HOURS (observed on prod 2026-09-08:
+ * passes stuck 3h+ with zero output, cursor never advancing) — undici waits
+ * indefinitely on a connection that accepts but never completes.
+ */
+const FETCH_TIMEOUT_MS = 60_000;
+
 async function rpc<T>(
   rpcUrl: string,
   method: string,
@@ -99,6 +107,7 @@ async function rpc<T>(
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ jsonrpc: '2.0', id: 1, method, params }),
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
   });
   const json = (await res.json()) as { result?: T; error?: unknown };
   if (json.error) throw new Error(`rpc ${method}: ${JSON.stringify(json.error)}`);
@@ -234,6 +243,7 @@ async function queryTransferLogs(
         Authorization: `Bearer ${bearer}`,
       },
       body: JSON.stringify(query),
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
     });
     if (!res.ok) throw new Error(`HyperSync ${res.status}: ${await res.text()}`);
 
