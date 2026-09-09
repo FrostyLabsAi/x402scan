@@ -44,6 +44,10 @@ const namedNetwork = z3.enum([
   'iotex',
   'solana-devnet',
   'solana',
+  // FORK-ONLY: already-normalized HyperEVM network name — the CAIP branch
+  // below only accepts the raw 'eip155:999' form, but our discovery endpoint
+  // (and stored responses) carry the normalized literal.
+  'hyperevm',
 ]);
 
 const networkSchemaV1 = z3.union([

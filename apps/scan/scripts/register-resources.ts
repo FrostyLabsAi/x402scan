@@ -109,10 +109,23 @@ async function restoreHistoricalPayTo() {
 /** Live-probe the endpoint's 402 body — the exact response the UI parses. */
 async function probe402(resource: string): Promise<unknown> {
   try {
+    // A minimal-but-valid A2A message/send: the route rejects malformed
+    // JSON-RPC with a 400 BEFORE the x402 gate, so a bare {} never sees a 402.
     const res = await fetch(resource, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'message/send',
+        params: {
+          message: {
+            role: 'user',
+            parts: [{ kind: 'text', text: 'probe' }],
+            messageId: 'register-probe',
+          },
+        },
+      }),
       signal: AbortSignal.timeout(15_000),
     });
     if (res.status !== 402) {

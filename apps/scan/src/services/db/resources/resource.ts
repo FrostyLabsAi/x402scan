@@ -111,11 +111,15 @@ export const upsertResource = async (
     const accepts = await Promise.all(
       supportedAccepts.map(async baseAccepts =>
         tx.accepts.upsert({
+          // FORK-ONLY: payTo is part of the key (see accepts_multi_payto
+          // migration) — a payout-wallet rotation now preserves the old
+          // wallet's row as history instead of overwriting it in place.
           where: {
-            resourceId_scheme_network: {
+            resourceId_scheme_network_payTo: {
               resourceId: resource.id,
               scheme: baseAccepts.scheme,
               network: baseAccepts.network as AcceptsNetwork,
+              payTo: baseAccepts.payTo,
             },
           },
           create: {

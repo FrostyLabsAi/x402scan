@@ -144,7 +144,10 @@ model Accepts {
 
   resourceRel Resources @relation(fields: [resourceId], references: [id])
 
-  @@unique([resourceId, scheme, network])
+  // FORK-ONLY (2026-09-09): payTo is part of the key so historical payout
+  // wallets can stay mapped alongside the live one (migration
+  // 20260909170000_accepts_multi_payto).
+  @@unique([resourceId, scheme, network, payTo])
   @@index([verified])
   @@index([resourceId, verified])
 }
