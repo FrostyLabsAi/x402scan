@@ -1,6 +1,6 @@
 'use client';
 
-import { CornerDownLeft, Plus, Search, X } from 'lucide-react';
+import { CornerDownLeft, Search, X } from 'lucide-react';
 import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
@@ -164,12 +164,6 @@ export const DiscoverSearchResults = () => {
         <p className="text-sm text-muted-foreground">
           No x402 results found. Try a different description.
         </p>
-        <Button variant="outline" size="lg" asChild>
-          <a href="/resources/register">
-            <Plus className="size-4" />
-            Add your API
-          </a>
-        </Button>
       </div>
     );
   }

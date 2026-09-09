@@ -37,9 +37,6 @@ export default function ArchitecturePage() {
         actions={
           <div className="flex items-center gap-2">
             <CopyPageButton />
-            <Button asChild size="sm">
-              <Link href="/resources/register">+ Add your API</Link>
-            </Button>
             <Button asChild variant="outline" size="sm">
               <Link href="/discovery/spec">Read the discovery spec</Link>
             </Button>
@@ -308,9 +305,6 @@ export default function ArchitecturePage() {
         </section>
 
         <section className="flex items-center gap-2">
-          <Button asChild size="sm">
-            <Link href="/resources/register">+ Add your API</Link>
-          </Button>
           <Button asChild variant="outline" size="sm">
             <Link href="/discovery/spec">Read the discovery spec</Link>
           </Button>

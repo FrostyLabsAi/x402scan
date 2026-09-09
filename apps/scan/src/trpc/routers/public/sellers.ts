@@ -60,7 +60,15 @@ export const sellersRouter = createTRPCRouter({
       .input(listFeaturedBazaarOriginsInputSchema)
       .query(async ({ input, ctx: { pagination } }) => {
         const originUrls = await getDiscoverOrigins();
-        return await listBazaarOrigins({ ...input, originUrls }, pagination);
+        // FORK-ONLY: getDiscoverOrigins is backed by AgentCash's internal
+        // curation API (Merit infra). Self-hosted instances have no AgentCash
+        // credentials, so the list is always empty — and an empty `originUrls`
+        // filters to `origin IN ()`, leaving Featured permanently blank. Fall
+        // back to the unfiltered bazaar list (= Top Servers) in that case.
+        return await listBazaarOrigins(
+          { ...input, ...(originUrls.length > 0 ? { originUrls } : {}) },
+          pagination
+        );
       }),
     stats: {
       // Use origin_stats_aggregated_* views which are pre-joined with payto_origin_map

@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { Check, Copy } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
@@ -25,9 +24,6 @@ export function DiscoveryHubActions() {
           <Copy className="size-3.5" />
         )}
         {isCopied ? 'Copied' : 'Copy Prompt for Agents'}
-      </Button>
-      <Button asChild variant="outline" size="sm">
-        <Link href="/resources/register">+ Add your API</Link>
       </Button>
     </div>
   );

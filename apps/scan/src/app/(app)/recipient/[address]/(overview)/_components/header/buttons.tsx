@@ -1,4 +1,4 @@
-import { Plus, TestTubeDiagonal } from 'lucide-react';
+import { TestTubeDiagonal } from 'lucide-react';
 
 import Link from 'next/link';
 
@@ -21,12 +21,6 @@ export const HeaderButtons: React.FC<Props> = ({ hasOrigins, address }) => {
           </Button>
         </Link>
       )}
-      <Link href="/resources/register">
-        <Button variant="outline">
-          <Plus className="size-4" />
-          Add your API
-        </Button>
-      </Link>
     </ButtonsContainer>
   );
 };

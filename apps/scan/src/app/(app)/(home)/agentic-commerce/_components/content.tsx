@@ -87,9 +87,6 @@ export function AgenticCommerceContent() {
         description="AI agents discover, pay for, and use digital services directly."
         actions={
           <div className="flex flex-col sm:flex-row gap-2">
-            <Button asChild size="sm">
-              <Link href="/resources/register">Register API</Link>
-            </Button>
             <Button asChild size="sm" variant="outline">
               <Link href="/resources">Browse services</Link>
             </Button>
@@ -171,12 +168,6 @@ export function AgenticCommerceContent() {
               href="/discovery"
             >
               Sell to agents
-            </Link>
-            <Link
-              className="font-medium underline-offset-4 hover:underline"
-              href="/resources/register"
-            >
-              Register API
             </Link>
             <Link
               className="font-medium underline-offset-4 hover:underline"

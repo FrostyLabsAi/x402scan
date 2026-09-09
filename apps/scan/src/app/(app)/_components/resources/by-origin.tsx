@@ -2,15 +2,10 @@
 
 import { useState } from 'react';
 
-import Link from 'next/link';
-
-import { Plus, ServerOff } from 'lucide-react';
-
-import { Button } from '@/components/ui/button';
+import { ServerOff } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import {
   Empty,
-  EmptyContent,
   EmptyDescription,
   EmptyHeader,
   EmptyMedia,
@@ -66,14 +61,6 @@ export const ResourcesByOrigin: React.FC<Props> = ({
             <EmptyTitle>No Resources</EmptyTitle>
             <EmptyDescription>{emptyText}</EmptyDescription>
           </EmptyHeader>
-          <EmptyContent>
-            <Link href="/resources/register">
-              <Button variant="turbo">
-                <Plus className="size-4" />
-                Add your API
-              </Button>
-            </Link>
-          </EmptyContent>
         </Empty>
       </Card>
     );

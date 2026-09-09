@@ -231,7 +231,11 @@ async function queryTransferLogs(
           'transaction_hash',
           'block_number',
         ],
-        transaction: ['hash', 'from'],
+        // `to` matters for EIP-7702 settlements: the outer tx is sent by a
+        // thirdweb executor TO the (delegated) facilitator account, which is
+        // then USDC's msg.sender — tx.from alone misses those (Base settle
+        // 0x8f9e0209…, 2026-09-08).
+        transaction: ['hash', 'from', 'to'],
         block: ['number', 'timestamp'],
       },
     };
@@ -251,21 +255,36 @@ async function queryTransferLogs(
     const page = normalizeBatches(body.data);
 
     const txFrom = new Map<string, string>();
+    const txTo = new Map<string, string>();
     const blockTs = new Map<number, number>();
     for (const chunk of page) {
-      for (const t of chunk.transactions ?? [])
+      for (const t of chunk.transactions ?? []) {
         txFrom.set(t.hash.toLowerCase(), (t.from ?? '').toLowerCase());
+        txTo.set(t.hash.toLowerCase(), (t.to ?? '').toLowerCase());
+      }
       for (const b of chunk.blocks ?? [])
         blockTs.set(asNum(b.number), asNum(b.timestamp));
     }
 
     for (const chunk of page) {
       for (const log of chunk.logs ?? []) {
-        const from = txFrom.get(log.transaction_hash.toLowerCase());
-        if (from !== p.facilitator) continue; // only the facilitator's settlements
+        const hash = log.transaction_hash.toLowerCase();
+        const from = txFrom.get(hash);
+        const to = txTo.get(hash);
+        // The facilitator's settlements: either a plain EOA broadcast
+        // (tx.from = facilitator) or an EIP-7702/executor send INTO the
+        // delegated facilitator account (tx.to = facilitator). Rows only come
+        // from Transfer logs in the matched tx, so an unauthorized call (which
+        // reverts, emitting nothing) or a plain top-up can't create rows.
+        if (from !== p.facilitator && to !== p.facilitator) continue;
         rows.push({
           contract_address: log.address,
-          transaction_from: from,
+          // Always the facilitator address, not the raw outer tx.from: in the
+          // 7702 case the facilitator account IS USDC's msg.sender (the outer
+          // from is just thirdweb's gas payer), and the sync cursor derives
+          // `since` from rows WHERE transaction_from = <facilitator address>
+          // (sync.ts) — storing the executor there would strand the cursor.
+          transaction_from: p.facilitator,
           sender: topicToAddress(log.topic1),
           recipient: topicToAddress(log.topic2),
           amount: BigInt(log.data).toString(),
@@ -305,7 +324,7 @@ interface HyperSyncBatch {
     transaction_hash: string;
     block_number?: number | string;
   }[];
-  transactions?: { hash: string; from: string }[];
+  transactions?: { hash: string; from: string; to?: string }[];
   blocks?: { number: number | string; timestamp: number | string }[];
 }
 

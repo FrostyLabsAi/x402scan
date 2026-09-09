@@ -50,9 +50,6 @@ export default function QuickstartPage() {
         </section>
 
         <section className="flex items-center gap-2">
-          <Button asChild size="sm">
-            <Link href="/resources/register">+ Add your API</Link>
-          </Button>
           <Button asChild variant="outline" size="sm">
             <Link href="/discovery/spec">Read the discovery spec →</Link>
           </Button>
