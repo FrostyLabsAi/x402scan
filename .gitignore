@@ -78,3 +78,5 @@ Thumbs.db
 .claude
 # Internal ops docs — never public
 X402SCAN_DEPLOY.md
+.superpowers/
+docs/superpowers/
